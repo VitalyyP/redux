@@ -10,12 +10,25 @@ const defaultState = {
   cash: 0,
 }
 
-const reduser = (state = defaultState, action) => {
+const cashReduser = (state = defaultState, action) => {
   switch (action.type) {
     case "ADD_CASH":
       return {...state, cash: state.cash + action.payload};
       
     case "GET_CASH":
+      return {...state, cash: state.cash - action.payload};
+      
+    default: 
+      return state;
+  }
+}
+
+const customerReduser = (state = defaultState, action) => {
+  switch (action.type) {
+    case "ADD_CUSTOMER":
+      return {...state, cash: state.cash + action.payload};
+      
+    case "GET_CUSTOMER":
       return {...state, cash: state.cash - action.payload};
       
     default: 
