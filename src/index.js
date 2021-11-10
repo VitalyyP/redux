@@ -4,9 +4,35 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { createStore } from "redux";
+
+const defaultState = {
+  cash: 0,
+}
+
+const reduser = (state = defaultState, action) => {
+  switch (action.type) {
+    case "ADD_CASH":
+      return {...state, cash: state.cash + action.payload};
+      
+    case "GET_CASH":
+      return {...state, cash: state.cash - action.payload};
+      
+    default: 
+      return state;
+  }
+}
+
+const ctore = createStore(reducer);
+
+
+
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
